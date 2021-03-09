@@ -1,6 +1,7 @@
 package it.polito.tdp.parole;
 
 import it.polito.tdp.parole.model.Parole;
+import it.polito.tdp.parole.model.Parole2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,7 +36,8 @@ public class FXMLController {
     @FXML
     private TextArea txtTime;
     
-    Parole parole =new Parole();
+    Parole2 parole =new Parole2();
+  //  Parole parole=new Parole();
 
     @FXML
     void doInsert(ActionEvent event) {
