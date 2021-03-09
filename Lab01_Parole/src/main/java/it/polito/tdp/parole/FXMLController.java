@@ -31,17 +31,40 @@ public class FXMLController {
 
     @FXML
     private Button btnReset;
+    
+    @FXML
+    private TextArea txtTime;
+    
+    Parole parole =new Parole();
 
     @FXML
     void doInsert(ActionEvent event) {
-    	// TODO
+    	long start=System.nanoTime();
+    	parole.addParola(txtParola.getText());
+    	txtResult.setText(parole.stampaElenco());
+    	txtParola.clear();
+    	long finish=System.nanoTime();
+    	txtTime.appendText((finish-start)+" aggiunta parola\n");
     }
 
     @FXML
     void doReset(ActionEvent event) {
-    	// TODO
+    	long start=System.nanoTime();
+    	txtResult.clear();
+    	txtParola.clear();
+    	parole.reset();
+    	long finish=System.nanoTime();
+    	txtTime.appendText((finish-start)+" tempo Reset\n");
     }
 
+    @FXML
+    void handleCancella(ActionEvent event) {
+    long start=System.nanoTime();
+     parole.cancella(txtResult.getSelectedText());
+     txtResult.setText(parole.stampaElenco());
+     long finish=System.nanoTime();
+     txtTime.appendText((finish-start)+" tempo Cancella\n");
+    }
     @FXML
     void initialize() {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Scene.fxml'.";
